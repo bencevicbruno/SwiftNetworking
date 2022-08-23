@@ -3,4 +3,86 @@
    uuid = "A3ED8C33-A1F4-4DFF-8F00-72C3ADBEF69D"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "28B9862A-B0E8-4423-83F5-B2CD25470A89"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DataServicePlayground/NetworkService/NetworkService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
+            landmarkName = "createURLRequest(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "28B9862A-B0E8-4423-83F5-B2CD25470A89 - 7d7b20dc3d343656"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DataServicePlayground.NetworkService.createURLRequest(DataServicePlayground.NetworkResource) -&gt; Swift.Result&lt;Foundation.URLRequest, Swift.Error&gt;"
+                  moduleName = "DataServicePlayground"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/brunobencevic/Desktop/SwiftNetworking/DataServicePlayground/NetworkService/NetworkService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "158"
+                  endingLineNumber = "158"
+                  offsetFromSymbolStart = "3176">
+               </Location>
+               <Location
+                  uuid = "28B9862A-B0E8-4423-83F5-B2CD25470A89 - 7d7b20dc3d343656"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DataServicePlayground.NetworkService.createURLRequest(DataServicePlayground.NetworkResource) -&gt; Swift.Result&lt;Foundation.URLRequest, Swift.Error&gt;"
+                  moduleName = "DataServicePlayground"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/brunobencevic/Desktop/SwiftNetworking/DataServicePlayground/NetworkService/NetworkService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "158"
+                  endingLineNumber = "158"
+                  offsetFromSymbolStart = "3264">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "835C5F15-32DE-4F51-B8ED-5C92036E9990"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DataServicePlayground/NetworkService/NetworkService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
+            landmarkName = "createURLRequest(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B3CEF576-C078-4D99-A962-BCF3C3BCD6E8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DataServicePlayground/NetworkService/NetworkService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
+            landmarkName = "createURLRequest(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

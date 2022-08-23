@@ -7,11 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8C2FA57A28B37DCB0055D7C4 /* Uploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2FA57928B37DCB0055D7C4 /* Uploadable.swift */; };
+		8C2FA57A28B37DCB0055D7C4 /* UploadableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2FA57928B37DCB0055D7C4 /* UploadableData.swift */; };
 		8C6D639128A69919005DE3CE /* DataServicePlaygroundApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6D639028A69919005DE3CE /* DataServicePlaygroundApp.swift */; };
-		8C6D639328A69919005DE3CE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6D639228A69919005DE3CE /* ContentView.swift */; };
+		8C6D639328A69919005DE3CE /* GeonamesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6D639228A69919005DE3CE /* GeonamesView.swift */; };
 		8C6D639528A6991B005DE3CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C6D639428A6991B005DE3CE /* Assets.xcassets */; };
-		8C6D639828A6991B005DE3CE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C6D639728A6991B005DE3CE /* Preview Assets.xcassets */; };
 		8C6D63A028A6A278005DE3CE /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6D639F28A6A278005DE3CE /* NetworkService.swift */; };
 		8C6D63A228A6A2D5005DE3CE /* NetworkServiceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6D63A128A6A2D5005DE3CE /* NetworkServiceConfiguration.swift */; };
 		8C6D63A428A6A311005DE3CE /* NetworkRequestInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6D63A328A6A311005DE3CE /* NetworkRequestInterceptor.swift */; };
@@ -23,17 +22,21 @@
 		8C6D63B528A93B3F005DE3CE /* NetworkLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6D63B428A93B3F005DE3CE /* NetworkLogger.swift */; };
 		8C6D63B828A93B7E005DE3CE /* NetworkLoggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6D63B728A93B7E005DE3CE /* NetworkLoggable.swift */; };
 		8C6D63BA28A93C13005DE3CE /* ConsoleNetworkLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6D63B928A93C13005DE3CE /* ConsoleNetworkLogger.swift */; };
+		8C82CFED28B4E72C009363C3 /* HTTPBinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C82CFEC28B4E72C009363C3 /* HTTPBinView.swift */; };
+		8C82CFEF28B4FAA8009363C3 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C82CFEE28B4FAA8009363C3 /* String+.swift */; };
+		8C82CFF528B4FC18009363C3 /* NSMutableData+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C82CFF428B4FC18009363C3 /* NSMutableData+.swift */; };
+		8C82CFF828B4FF66009363C3 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C82CFF728B4FF66009363C3 /* UIImage+.swift */; };
+		8C82CFFB28B501D1009363C3 /* UploadableData+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C82CFFA28B501D1009363C3 /* UploadableData+UIImage.swift */; };
 		8CAB84F728AB79EA00CF59DC /* DefaultResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAB84F628AB79EA00CF59DC /* DefaultResponseHandler.swift */; };
 		8CAB84FA28AB983C00CF59DC /* NetworkResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAB84F928AB983C00CF59DC /* NetworkResponseHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8C2FA57928B37DCB0055D7C4 /* Uploadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Uploadable.swift; sourceTree = "<group>"; };
+		8C2FA57928B37DCB0055D7C4 /* UploadableData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadableData.swift; sourceTree = "<group>"; };
 		8C6D638D28A69919005DE3CE /* DataServicePlayground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DataServicePlayground.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C6D639028A69919005DE3CE /* DataServicePlaygroundApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataServicePlaygroundApp.swift; sourceTree = "<group>"; };
-		8C6D639228A69919005DE3CE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		8C6D639228A69919005DE3CE /* GeonamesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeonamesView.swift; sourceTree = "<group>"; };
 		8C6D639428A6991B005DE3CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		8C6D639728A6991B005DE3CE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8C6D639F28A6A278005DE3CE /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		8C6D63A128A6A2D5005DE3CE /* NetworkServiceConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceConfiguration.swift; sourceTree = "<group>"; };
 		8C6D63A328A6A311005DE3CE /* NetworkRequestInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestInterceptor.swift; sourceTree = "<group>"; };
@@ -46,6 +49,11 @@
 		8C6D63B428A93B3F005DE3CE /* NetworkLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLogger.swift; sourceTree = "<group>"; };
 		8C6D63B728A93B7E005DE3CE /* NetworkLoggable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLoggable.swift; sourceTree = "<group>"; };
 		8C6D63B928A93C13005DE3CE /* ConsoleNetworkLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleNetworkLogger.swift; sourceTree = "<group>"; };
+		8C82CFEC28B4E72C009363C3 /* HTTPBinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPBinView.swift; sourceTree = "<group>"; };
+		8C82CFEE28B4FAA8009363C3 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		8C82CFF428B4FC18009363C3 /* NSMutableData+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableData+.swift"; sourceTree = "<group>"; };
+		8C82CFF728B4FF66009363C3 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
+		8C82CFFA28B501D1009363C3 /* UploadableData+UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UploadableData+UIImage.swift"; sourceTree = "<group>"; };
 		8CAB84F628AB79EA00CF59DC /* DefaultResponseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultResponseHandler.swift; sourceTree = "<group>"; };
 		8CAB84F928AB983C00CF59DC /* NetworkResponseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponseHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -88,22 +96,15 @@
 		8C6D638F28A69919005DE3CE /* DataServicePlayground */ = {
 			isa = PBXGroup;
 			children = (
-				8C6D63B128A7CFF7005DE3CE /* Info.plist */,
-				8C6D639E28A69923005DE3CE /* NetworkService */,
 				8C6D639028A69919005DE3CE /* DataServicePlaygroundApp.swift */,
-				8C6D639228A69919005DE3CE /* ContentView.swift */,
+				8C82CFF328B4FBEE009363C3 /* UI */,
+				8C6D63B128A7CFF7005DE3CE /* Info.plist */,
+				8C82CFF928B4FF83009363C3 /* UploadableData */,
+				8C6D639E28A69923005DE3CE /* NetworkService */,
+				8C82CFF028B4FAAA009363C3 /* Extensions */,
 				8C6D639428A6991B005DE3CE /* Assets.xcassets */,
-				8C6D639628A6991B005DE3CE /* Preview Content */,
 			);
 			path = DataServicePlayground;
-			sourceTree = "<group>";
-		};
-		8C6D639628A6991B005DE3CE /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				8C6D639728A6991B005DE3CE /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		8C6D639E28A69923005DE3CE /* NetworkService */ = {
@@ -113,7 +114,6 @@
 				8CAB84F828AB982700CF59DC /* ResponseHandler */,
 				8C6D63B628A93B69005DE3CE /* Logger */,
 				8C6D639F28A6A278005DE3CE /* NetworkService.swift */,
-				8C2FA57928B37DCB0055D7C4 /* Uploadable.swift */,
 				8C6D63A128A6A2D5005DE3CE /* NetworkServiceConfiguration.swift */,
 				8C6D63A928A6A491005DE3CE /* HTTPMethod.swift */,
 				8C6D63A528A6A334005DE3CE /* NetworkResource.swift */,
@@ -132,6 +132,42 @@
 				8C6D63B928A93C13005DE3CE /* ConsoleNetworkLogger.swift */,
 			);
 			path = Logger;
+			sourceTree = "<group>";
+		};
+		8C82CFF028B4FAAA009363C3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8C82CFF628B4FF4E009363C3 /* UIKit */,
+				8C82CFEE28B4FAA8009363C3 /* String+.swift */,
+				8C82CFF428B4FC18009363C3 /* NSMutableData+.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8C82CFF328B4FBEE009363C3 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				8C82CFEC28B4E72C009363C3 /* HTTPBinView.swift */,
+				8C6D639228A69919005DE3CE /* GeonamesView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		8C82CFF628B4FF4E009363C3 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				8C82CFF728B4FF66009363C3 /* UIImage+.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		8C82CFF928B4FF83009363C3 /* UploadableData */ = {
+			isa = PBXGroup;
+			children = (
+				8C2FA57928B37DCB0055D7C4 /* UploadableData.swift */,
+				8C82CFFA28B501D1009363C3 /* UploadableData+UIImage.swift */,
+			);
+			path = UploadableData;
 			sourceTree = "<group>";
 		};
 		8CAB84F828AB982700CF59DC /* ResponseHandler */ = {
@@ -201,7 +237,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C6D639828A6991B005DE3CE /* Preview Assets.xcassets in Resources */,
 				8C6D639528A6991B005DE3CE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -217,16 +252,21 @@
 				8CAB84FA28AB983C00CF59DC /* NetworkResponseHandler.swift in Sources */,
 				8C6D63B028A6A756005DE3CE /* ResourceEncoding.swift in Sources */,
 				8C6D63A028A6A278005DE3CE /* NetworkService.swift in Sources */,
-				8C2FA57A28B37DCB0055D7C4 /* Uploadable.swift in Sources */,
+				8C82CFFB28B501D1009363C3 /* UploadableData+UIImage.swift in Sources */,
+				8C82CFED28B4E72C009363C3 /* HTTPBinView.swift in Sources */,
+				8C2FA57A28B37DCB0055D7C4 /* UploadableData.swift in Sources */,
 				8C6D63A428A6A311005DE3CE /* NetworkRequestInterceptor.swift in Sources */,
 				8C6D63BA28A93C13005DE3CE /* ConsoleNetworkLogger.swift in Sources */,
 				8C6D63A228A6A2D5005DE3CE /* NetworkServiceConfiguration.swift in Sources */,
 				8C6D63AA28A6A491005DE3CE /* HTTPMethod.swift in Sources */,
-				8C6D639328A69919005DE3CE /* ContentView.swift in Sources */,
+				8C82CFEF28B4FAA8009363C3 /* String+.swift in Sources */,
+				8C6D639328A69919005DE3CE /* GeonamesView.swift in Sources */,
 				8C6D63AC28A6A66F005DE3CE /* NetworkError.swift in Sources */,
 				8C6D63A628A6A334005DE3CE /* NetworkResource.swift in Sources */,
+				8C82CFF528B4FC18009363C3 /* NSMutableData+.swift in Sources */,
 				8C6D639128A69919005DE3CE /* DataServicePlaygroundApp.swift in Sources */,
 				8C6D63B528A93B3F005DE3CE /* NetworkLogger.swift in Sources */,
+				8C82CFF828B4FF66009363C3 /* UIImage+.swift in Sources */,
 				8CAB84F728AB79EA00CF59DC /* DefaultResponseHandler.swift in Sources */,
 				8C6D63B828A93B7E005DE3CE /* NetworkLoggable.swift in Sources */,
 			);
@@ -356,7 +396,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"DataServicePlayground/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 6P46HLU94P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -387,7 +427,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"DataServicePlayground/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 6P46HLU94P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

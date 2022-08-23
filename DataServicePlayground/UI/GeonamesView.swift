@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  GeonamesView.swift
 //  DataServicePlayground
 //
 //  Created by Bruno Benčević on 12.08.2022..
@@ -23,9 +23,7 @@ extension GeoNamesResponse {
     }
 }
 
-struct ContentView: View {
-    
-//http://api.geonames.org/searchJSON?name_startsWith=\(urlSafePrefix)&maxRows=10&username=bencevic_bruno
+struct GeonamesView: View {
     
     @State private var cancellables: Set<AnyCancellable> = []
     
@@ -74,60 +72,62 @@ struct ContentView: View {
             (networkService.isNetworkAvailable ? Color.green : Color.red).opacity(0.4)
         )
         .background(Color.white)
-        .onAppear {
-//            networkAvailable = networkService.isNetworkAvailable
-        }
         .onTapGesture {
             UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
         }
+        .edgesIgnoringSafeArea(.top)
     }
     
     func performRequest() {
-        var r = NetworkResource(path: "/searchJSON")
-         let r1 = r.setParameters([
+        let resource = NetworkResource("/searchJSON",
+        parameters: [
             "name_startsWith": searchText,
             "username": "bencevic_bruno"
         ])
         
-//        let request = Resource(path: "/searchJSON",
-//                                     parameters: ["name_startsWith" : searchText,
-//                                                  "username": "bencevic_bruno"],
-//                                     httpMethod: .GET)
-        
-        // Async Await
+        performAsyncAwait(resource)
+    }
+    
+    func performAsyncAwait(_ resource: NetworkResource) {
         Task {
             do {
-                let result: GeoNamesResponse = try await networkService.perform(request: r1)
-                text = Set(result.locations).sorted().joined(separator: "\n")
+                let response: GeoNamesResponse = try await networkService.fetch(resource)
+                text = Set(response.locations).sorted().joined(separator: "\n")
             } catch {
                 print(error)
             }
         }
-        
-        // Combine
-//        networkService.perform(request)
-//            .sink(receiveCompletion: { completion in
-//                switch completion {
-//                case .failure(let error):
-//                    text = "\(error)"
-//                case .finished:
-//                    print("finished")
-//                }
-//            }, receiveValue: { (response: GeoNamesResponse) in
-//                text = "\(response)"
-//            })
-//            .store(in: &cancellables)
-//
-//        // Callback
-//        networkService.performRequest(request) { (result: Result<GeoNamesResponse, Error>) in
-//
-//            text = "\(result)"
-//        }
+    }
+    
+    func performCombine(_ resource: NetworkResource) {
+        networkService.fetch(resource)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .failure(let error):
+                    text = "\(error)"
+                case .finished:
+                    print("finished")
+                }
+            }, receiveValue: { (response: GeoNamesResponse) in
+                text = Set(response.locations).sorted().joined(separator: "\n")
+            })
+            .store(in: &cancellables)
+    }
+    
+    func perfomCompletion(_ resource: NetworkResource) {
+        networkService.fetch(resource) { (result: Result<GeoNamesResponse, Error>) in
+            switch result {
+            case .success(let response):
+                self.text = Set(response.locations).sorted().joined(separator: "\n")
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct GeonamesView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        GeonamesView()
     }
 }

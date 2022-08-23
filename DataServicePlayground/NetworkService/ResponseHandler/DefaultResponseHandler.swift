@@ -30,6 +30,7 @@ struct DefaultResponseHandler: NetworkResponseHandler {
             completion(.failure(NetworkError.noResponseData))
             return
         }
+        logger?.log(String(decoding: data, as: UTF8.self))
         
         let t: T
         do {

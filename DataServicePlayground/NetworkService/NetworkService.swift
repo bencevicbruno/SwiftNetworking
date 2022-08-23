@@ -49,23 +49,23 @@ final class NetworkService: ObservableObject {
 // MARK: - Performing Requests
 extension NetworkService {
     
-    func fetch<T>(request: NetworkResource, completion: @escaping NetworkCallback<T>) where T: Decodable {
-        performRequest(request) { [weak self] (result: Result<T, Error>) in
+    func fetch<T>(_ resource: NetworkResource, completion: @escaping NetworkCallback<T>) where T: Decodable {
+        performRequest(resource) { [weak self] (result: Result<T, Error>) in
             guard let self = self else { return }
             
-            let qos = request.handlerQoS ?? self.configuration.completionThread
+            let qos = resource.handlerQoS ?? self.configuration.completionThread
             DispatchQueue.global(qos: qos).async {
                 completion(result)
             }
         }
     }
     
-    func fetch<T>(request: NetworkResource) -> AnyPublisher<T, Error> where T: Decodable {
+    func fetch<T>(_ resource: NetworkResource) -> AnyPublisher<T, Error> where T: Decodable {
         return Deferred { [weak self] in
             Future { [weak self] promise in
                 guard let self = self else { return }
                 
-                self.performRequest(request) { (result: Result<T, Error>) in
+                self.performRequest(resource) { (result: Result<T, Error>) in
                     switch result {
                     case .success(let t):
                         promise(.success(t))
@@ -75,18 +75,18 @@ extension NetworkService {
                 }
             }
         }
-        .receive(on: DispatchQueue.global(qos: request.handlerQoS ?? configuration.completionThread))
+        .receive(on: DispatchQueue.global(qos: resource.handlerQoS ?? configuration.completionThread))
         .eraseToAnyPublisher()
     }
     
-    func perform<T>(request: NetworkResource) async throws -> T where T: Decodable {
+    func fetch<T>(_ resource: NetworkResource) async throws -> T where T: Decodable {
         return try await withCheckedThrowingContinuation { [weak self] continuation in
             guard let self = self else {
                 // TODO: - throw error
                 return
             }
             
-            self.performRequest(request) { (result: Result<T, Error>) in
+            self.performRequest(resource) { (result: Result<T, Error>) in
                 switch result {
                 case .success(let t):
                     continuation.resume(returning: t)
@@ -138,49 +138,47 @@ private extension NetworkService {
             urlRequest.addValue($0.value, forHTTPHeaderField: $0.key)
         }
         
-        if !request.uploadables.isEmpty {
+        if !request.uploadableData.isEmpty {
             let boundary = "Boundary-" + UUID().uuidString
             urlRequest.addValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
             
             do {
-                request = request.setBody(try createURLRequestBody(uploadables: networkRequest.uploadables, boundary: boundary))
+                let bodyPart = try createURLRequestBody(uploadables: networkRequest.uploadableData, boundary: boundary)
+                
+                if var body = urlRequest.httpBody {
+                    body += bodyPart
+                } else {
+                    urlRequest.httpBody = bodyPart
+                }
             } catch {
                 return .failure(NetworkError.unableToCreateRequestBody(error))
             }
+        }
+        
+        if let body = urlRequest.httpBody {
+            print(String(decoding: body, as: UTF8.self))
         }
         
         return .success(urlRequest)
     }
     
     func createURLRequestBody(uploadables: Set<UploadableData>, boundary: String) throws -> Data {
-        let crlf = "\r\n"
-        // add all types needed -- multipart form data
-        let body = NSMutableData()
+        var body = NSMutableData()
         
         for uploadable in uploadables {
-            body.append("--\(boundary)\(crlf)")
-            body.append("Content-Disposition: form-data; name=\"\(uploadable.uploadableFieldName)\"; filename=\"\(uploadable.uploadableFileName)\"\(crlf)")
-            body.append("Content-Type: \(uploadable.uploadableMimeType)\r\n\r\n")
-            body.append(uploadable.uploadableData)
-            body.append(crlf)
+            body += "--" + boundary + .carriageReturnNewLine
+            body += "Content-Disposition: form-data; name=\"\(uploadable.name)\"; filename=\"\(uploadable.fileName)\"" + .carriageReturnNewLine
+            body += "Content-Type: \(uploadable.mimeType)" + .carriageReturnNewLine + .carriageReturnNewLine
+            body += uploadable.data
+            body += .carriageReturnNewLine
         }
-        
         
         if !uploadables.isEmpty {
-            body.append("--\(boundary)--")
+            body += "--" + boundary + "--" + .carriageReturnNewLine
         }
-        
-        
         
         return body as Data
     }
 }
 
-extension NSMutableData {
-    
-  func append(_ string: String) {
-    if let data = string.data(using: .utf8) {
-      self.append(data)
-    }
-  }
-}
+

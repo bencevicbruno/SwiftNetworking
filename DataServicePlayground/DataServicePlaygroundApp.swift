@@ -9,9 +9,23 @@ import SwiftUI
 
 @main
 struct DataServicePlaygroundApp: App {
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TabView {
+                HTTPBinView()
+                    .tabItem {
+                        Image(systemName: "icloud.and.arrow.up")
+                        Text("HTTPBin")
+                    }
+                
+                GeonamesView()
+                    .tabItem {
+                        Image(systemName: "globe")
+                        Text("Geonames")
+                    }
+            }
+            .preferredColorScheme(.light)
         }
     }
 }

@@ -19,7 +19,7 @@ struct NetworkResource {
     
     init(_ path: String,
          parameters: [String: String] = [:],
-         method: HTTPMethod,
+         method: HTTPMethod = .GET,
          headers: [String: String] = [:],
          body: Data? = nil,
          responseHandler: NetworkResponseHandler? = nil,
