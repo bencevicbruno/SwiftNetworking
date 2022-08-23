@@ -10,8 +10,16 @@ import Foundation
 enum NetworkError: Error {
     case cantParseURL
     case badURL
-    case unableToEncodeRequestBodyAsJSON(Error)
-    case unableToEncodeRequestBodyAsUTF8
+    case cantEncodeRequestBodyAsJSON(Error)
+    case canEncodeRequestBodyAsUTF8
     case noResponseData
     case badResponseJSON(Error)
+    case unableToCreateRequestBody(Error)
+}
+
+extension Error {
+    
+    var isNoInternet: Bool {
+        (self as? URLError)?.code == .notConnectedToInternet
+    }
 }

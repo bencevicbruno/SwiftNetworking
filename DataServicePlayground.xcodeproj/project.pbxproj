@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C2FA57A28B37DCB0055D7C4 /* Uploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2FA57928B37DCB0055D7C4 /* Uploadable.swift */; };
 		8C6D639128A69919005DE3CE /* DataServicePlaygroundApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6D639028A69919005DE3CE /* DataServicePlaygroundApp.swift */; };
 		8C6D639328A69919005DE3CE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6D639228A69919005DE3CE /* ContentView.swift */; };
 		8C6D639528A6991B005DE3CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C6D639428A6991B005DE3CE /* Assets.xcassets */; };
@@ -14,7 +15,7 @@
 		8C6D63A028A6A278005DE3CE /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6D639F28A6A278005DE3CE /* NetworkService.swift */; };
 		8C6D63A228A6A2D5005DE3CE /* NetworkServiceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6D63A128A6A2D5005DE3CE /* NetworkServiceConfiguration.swift */; };
 		8C6D63A428A6A311005DE3CE /* NetworkRequestInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6D63A328A6A311005DE3CE /* NetworkRequestInterceptor.swift */; };
-		8C6D63A628A6A334005DE3CE /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6D63A528A6A334005DE3CE /* NetworkRequest.swift */; };
+		8C6D63A628A6A334005DE3CE /* NetworkResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6D63A528A6A334005DE3CE /* NetworkResource.swift */; };
 		8C6D63AA28A6A491005DE3CE /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6D63A928A6A491005DE3CE /* HTTPMethod.swift */; };
 		8C6D63AC28A6A66F005DE3CE /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6D63AB28A6A66F005DE3CE /* NetworkError.swift */; };
 		8C6D63B028A6A756005DE3CE /* ResourceEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6D63AF28A6A756005DE3CE /* ResourceEncoding.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8C2FA57928B37DCB0055D7C4 /* Uploadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Uploadable.swift; sourceTree = "<group>"; };
 		8C6D638D28A69919005DE3CE /* DataServicePlayground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DataServicePlayground.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C6D639028A69919005DE3CE /* DataServicePlaygroundApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataServicePlaygroundApp.swift; sourceTree = "<group>"; };
 		8C6D639228A69919005DE3CE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -35,7 +37,7 @@
 		8C6D639F28A6A278005DE3CE /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		8C6D63A128A6A2D5005DE3CE /* NetworkServiceConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceConfiguration.swift; sourceTree = "<group>"; };
 		8C6D63A328A6A311005DE3CE /* NetworkRequestInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestInterceptor.swift; sourceTree = "<group>"; };
-		8C6D63A528A6A334005DE3CE /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
+		8C6D63A528A6A334005DE3CE /* NetworkResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResource.swift; sourceTree = "<group>"; };
 		8C6D63A928A6A491005DE3CE /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		8C6D63AB28A6A66F005DE3CE /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		8C6D63AF28A6A756005DE3CE /* ResourceEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceEncoding.swift; sourceTree = "<group>"; };
@@ -59,6 +61,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8C2FA57828AD1ACA0055D7C4 /* Interceptor */ = {
+			isa = PBXGroup;
+			children = (
+				8C6D63A328A6A311005DE3CE /* NetworkRequestInterceptor.swift */,
+			);
+			path = Interceptor;
+			sourceTree = "<group>";
+		};
 		8C6D638428A69919005DE3CE = {
 			isa = PBXGroup;
 			children = (
@@ -99,13 +109,14 @@
 		8C6D639E28A69923005DE3CE /* NetworkService */ = {
 			isa = PBXGroup;
 			children = (
-				8CAB84F828AB982700CF59DC /* NetworkResponseHandler */,
-				8C6D63B628A93B69005DE3CE /* Logging */,
+				8C2FA57828AD1ACA0055D7C4 /* Interceptor */,
+				8CAB84F828AB982700CF59DC /* ResponseHandler */,
+				8C6D63B628A93B69005DE3CE /* Logger */,
 				8C6D639F28A6A278005DE3CE /* NetworkService.swift */,
+				8C2FA57928B37DCB0055D7C4 /* Uploadable.swift */,
 				8C6D63A128A6A2D5005DE3CE /* NetworkServiceConfiguration.swift */,
 				8C6D63A928A6A491005DE3CE /* HTTPMethod.swift */,
-				8C6D63A328A6A311005DE3CE /* NetworkRequestInterceptor.swift */,
-				8C6D63A528A6A334005DE3CE /* NetworkRequest.swift */,
+				8C6D63A528A6A334005DE3CE /* NetworkResource.swift */,
 				8C6D63AB28A6A66F005DE3CE /* NetworkError.swift */,
 				8C6D63AF28A6A756005DE3CE /* ResourceEncoding.swift */,
 				8C6D63B228A93593005DE3CE /* NetworkExtensions.swift */,
@@ -113,23 +124,23 @@
 			path = NetworkService;
 			sourceTree = "<group>";
 		};
-		8C6D63B628A93B69005DE3CE /* Logging */ = {
+		8C6D63B628A93B69005DE3CE /* Logger */ = {
 			isa = PBXGroup;
 			children = (
 				8C6D63B428A93B3F005DE3CE /* NetworkLogger.swift */,
 				8C6D63B728A93B7E005DE3CE /* NetworkLoggable.swift */,
 				8C6D63B928A93C13005DE3CE /* ConsoleNetworkLogger.swift */,
 			);
-			path = Logging;
+			path = Logger;
 			sourceTree = "<group>";
 		};
-		8CAB84F828AB982700CF59DC /* NetworkResponseHandler */ = {
+		8CAB84F828AB982700CF59DC /* ResponseHandler */ = {
 			isa = PBXGroup;
 			children = (
 				8CAB84F928AB983C00CF59DC /* NetworkResponseHandler.swift */,
 				8CAB84F628AB79EA00CF59DC /* DefaultResponseHandler.swift */,
 			);
-			path = NetworkResponseHandler;
+			path = ResponseHandler;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,13 +217,14 @@
 				8CAB84FA28AB983C00CF59DC /* NetworkResponseHandler.swift in Sources */,
 				8C6D63B028A6A756005DE3CE /* ResourceEncoding.swift in Sources */,
 				8C6D63A028A6A278005DE3CE /* NetworkService.swift in Sources */,
+				8C2FA57A28B37DCB0055D7C4 /* Uploadable.swift in Sources */,
 				8C6D63A428A6A311005DE3CE /* NetworkRequestInterceptor.swift in Sources */,
 				8C6D63BA28A93C13005DE3CE /* ConsoleNetworkLogger.swift in Sources */,
 				8C6D63A228A6A2D5005DE3CE /* NetworkServiceConfiguration.swift in Sources */,
 				8C6D63AA28A6A491005DE3CE /* HTTPMethod.swift in Sources */,
 				8C6D639328A69919005DE3CE /* ContentView.swift in Sources */,
 				8C6D63AC28A6A66F005DE3CE /* NetworkError.swift in Sources */,
-				8C6D63A628A6A334005DE3CE /* NetworkRequest.swift in Sources */,
+				8C6D63A628A6A334005DE3CE /* NetworkResource.swift in Sources */,
 				8C6D639128A69919005DE3CE /* DataServicePlaygroundApp.swift in Sources */,
 				8C6D63B528A93B3F005DE3CE /* NetworkLogger.swift in Sources */,
 				8CAB84F728AB79EA00CF59DC /* DefaultResponseHandler.swift in Sources */,
@@ -354,6 +366,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -384,6 +397,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

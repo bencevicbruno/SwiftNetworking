@@ -9,5 +9,5 @@ import Foundation
 
 protocol NetworkRequestInterceptor {
     
-    func intercept(_ request: inout NetworkRequest)
+    func intercept(_ request: inout NetworkResource)
 }

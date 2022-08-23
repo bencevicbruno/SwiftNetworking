@@ -18,7 +18,7 @@ struct ConsoleNetworkLogger: NetworkLogger {
     }
     
     func log(_ error: Error) {
-        if let error = error as? URLError {
+        if let error = error as? NetworkLoggable {
             print(error.networkLoggerDescription)
         } else {
             print("Error:\n\t\(error)")

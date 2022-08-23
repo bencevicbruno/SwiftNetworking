@@ -29,44 +29,83 @@ struct ContentView: View {
     
     @State private var cancellables: Set<AnyCancellable> = []
     
-    let networkService = NetworkService(configuration: .init(baseURL: "http://api.geonames.org", logger: ConsoleNetworkLogger.instance, sessionName: "TestNetwork"))
+    @StateObject var networkService = NetworkService(configuration: .init(baseURL: "http://api.geonames.org", logger: ConsoleNetworkLogger.instance, sessionName: "TestNetwork"))
     
     @State private var text: String? = nil
+    @State private var searchText = ""
+    
+    init() {
+    }
+    
     var body: some View {
         VStack {
+            Text("Network: \(networkService.isNetworkAvailable ? "Available" : "Unavailable")")
+                .font(.bold(.headline)())
+                .padding()
+            
             if let text = text {
                 ScrollView(.vertical) {
                     Text(text)
                         .padding()
-                }
+                }.padding()
+            } else {
+                Spacer()
             }
+                
             
-            Button("Perform Request") {
-                performRequest()
+            VStack {
+                TextField("Insert Prefix", text: $searchText)
+                    .frame(height: 60)
+                    .background(Color.black.opacity(0.05))
+                    .padding()
+                
+                Button("Perform Request") {
+                    performRequest()
+                }
+                .padding()
+                .buttonStyle(
+                    .plain)
+                .background(Color.blue)
+                .padding()
             }
-            .padding()
-            .buttonStyle(.borderedProminent)
+        }
+        .foregroundColor(.black)
+        .background(
+            (networkService.isNetworkAvailable ? Color.green : Color.red).opacity(0.4)
+        )
+        .background(Color.white)
+        .onAppear {
+//            networkAvailable = networkService.isNetworkAvailable
+        }
+        .onTapGesture {
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
         }
     }
     
     func performRequest() {
-        let request = NetworkRequest(path: "/searchJSON",
-                                     parameters: ["name_startsWith" : "Brod",
-                                                  "username": "bencevic_bruno"],
-                                     httpMethod: .GET, resourceEncoding: .json)
+        var r = NetworkResource(path: "/searchJSON")
+         let r1 = r.setParameters([
+            "name_startsWith": searchText,
+            "username": "bencevic_bruno"
+        ])
+        
+//        let request = Resource(path: "/searchJSON",
+//                                     parameters: ["name_startsWith" : searchText,
+//                                                  "username": "bencevic_bruno"],
+//                                     httpMethod: .GET)
         
         // Async Await
         Task {
             do {
-                let result: GeoNamesResponse = try await networkService.perform(request: request)
-                text = "\(result)"
+                let result: GeoNamesResponse = try await networkService.perform(request: r1)
+                text = Set(result.locations).sorted().joined(separator: "\n")
             } catch {
                 print(error)
             }
         }
         
         // Combine
-//        networkService.performRequest(request)
+//        networkService.perform(request)
 //            .sink(receiveCompletion: { completion in
 //                switch completion {
 //                case .failure(let error):
@@ -78,8 +117,8 @@ struct ContentView: View {
 //                text = "\(response)"
 //            })
 //            .store(in: &cancellables)
-        
-        // Callback
+//
+//        // Callback
 //        networkService.performRequest(request) { (result: Result<GeoNamesResponse, Error>) in
 //
 //            text = "\(result)"
