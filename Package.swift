@@ -5,11 +5,14 @@ import PackageDescription
 
 let package = Package(
     name: "SwiftNetworking",
+    platforms: [
+        .iOS(.v13)
+    ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "SwiftNetworking",
-            targets: ["SwiftNetworking"]),
+            targets: ["SwiftNetworking"])
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -23,6 +26,6 @@ let package = Package(
             dependencies: []),
         .testTarget(
             name: "SwiftNetworkingTests",
-            dependencies: ["SwiftNetworking"]),
+            dependencies: ["SwiftNetworking"])
     ]
 )
