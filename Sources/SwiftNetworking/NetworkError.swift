@@ -10,6 +10,8 @@ import Foundation
 public enum NetworkError: Error {
     case cantParseURL
     case badURL
+    case cantEndoceParametersInBodyasString
+    case cantEndoceParametersInBodyasJSON
     case cantEncodeRequestBodyAsJSON(Error)
     case canEncodeRequestBodyAsUTF8
     case noResponseData

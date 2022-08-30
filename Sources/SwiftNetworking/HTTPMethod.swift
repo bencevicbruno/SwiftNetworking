@@ -27,3 +27,34 @@ public enum HTTPMethod: String {
     /// Applies partial modifications to a resource.
     case PATCH
 }
+
+extension HTTPMethod {
+ 
+    init(_ httpMethod: HTTPMethodForMultipartData) {
+        switch httpMethod {
+        case .POST:
+            self = .POST
+        case .PUT:
+            self = .PUT
+        }
+    }
+    
+    init(_ httpMethod: HTTPMethodForBodyParameters) {
+        switch httpMethod {
+        case .GET:
+            self = .GET
+        case .HEAD:
+            self = .HEAD
+        case .DELETE:
+            self = .DELETE
+        case .CONNECT:
+            self = .CONNECT
+        case .OPTIONS:
+            self = .OPTIONS
+        case .TRACE:
+            self = .TRACE
+        case .PATCH:
+            self = .PATCH
+        }
+    }
+}

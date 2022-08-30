@@ -117,9 +117,12 @@ private extension NetworkService {
         var request = networkRequest
         requestInterceptors.forEach { $0.intercept(&request) }
         
-        guard var urlComponents = URLComponents(string: configuration.baseURL + request.path) else { return .failure(NetworkError.cantParseURL) }
+        guard var urlComponents = URLComponents(string: configuration.baseURL + request.path) else { return .failure(NetworkError.cantParseURL)
+        }
         
-        urlComponents.queryItems = request.parameters.map { .init(name: $0.key, value: $0.value) }
+        if networkRequest.parametersEncoding == .url {
+            urlComponents.queryItems = request.parameters.map { .init(name: $0.key, value: $0.value) }
+        }
         
         guard let url = urlComponents.url else { return .failure(NetworkError.badURL) }
         var urlRequest = URLRequest(url: url)
@@ -130,7 +133,33 @@ private extension NetworkService {
             urlRequest.addValue($0.value, forHTTPHeaderField: $0.key)
         }
         
-        if !request.multipartData.isEmpty {
+        if networkRequest.parametersEncoding != .url {
+            switch networkRequest.parametersEncoding {
+            case .json:
+                do {
+                    let data = try JSONSerialization.data(withJSONObject: networkRequest.parameters, options: [.prettyPrinted, .sortedKeys])
+                    request.body = data
+                    
+                    if urlRequest.value(forHTTPHeaderField: "Content-Type") == nil {
+                        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                    }
+                } catch {
+                    return .failure(NetworkError.cantEncodeRequestBodyAsJSON(error))
+                }
+            case .plist:
+                fatalError("Not implemented")
+            case .string:
+                let parametersString = networkRequest.parameters.map { "\($0)=\($1)" }.joined(separator: "&")
+                guard let data = parametersString.data(using: .utf8, allowLossyConversion: false) else {
+                    return .failure(NetworkError.cantEndoceParametersInBodyasString)
+                }
+                request.body = data
+                
+                if urlRequest.value(forHTTPHeaderField: "Content-Type") == nil {
+                    urlRequest.setValue("application/x-www-form-urlencoded; charset=utf-8", forHTTPHeaderField: "Content-Type")
+                }
+            }
+        } else if !request.multipartData.isEmpty {
             let boundary = "Boundary-" + UUID().uuidString
             urlRequest.addValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
             
