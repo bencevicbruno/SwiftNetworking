@@ -12,4 +12,8 @@ extension String {
     static var carriageReturnNewLine: String {
         "\r\n"
     }
+    
+    var urlSafe: Self {
+        self.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? self
+    }
 }

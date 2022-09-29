@@ -115,6 +115,7 @@ private extension NetworkService {
     
     func createURLRequest(_ networkRequest: NetworkRequest) -> Result<URLRequest, Error> {
         var request = networkRequest
+        request.parameters = request.parameters.urlSafe
         requestInterceptors.forEach { $0.intercept(&request) }
         
         guard var urlComponents = URLComponents(string: configuration.baseURL + request.path) else { return .failure(NetworkError.cantParseURL)
@@ -158,6 +159,8 @@ private extension NetworkService {
                 if urlRequest.value(forHTTPHeaderField: "Content-Type") == nil {
                     urlRequest.setValue("application/x-www-form-urlencoded; charset=utf-8", forHTTPHeaderField: "Content-Type")
                 }
+            default:
+                break
             }
         } else if !request.multipartData.isEmpty {
             let boundary = "Boundary-" + UUID().uuidString
